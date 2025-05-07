@@ -1,10 +1,21 @@
+function mostrarPresentes() {
+  var container = document.getElementById('present-container');
+  // Alterna a visibilidade do contêiner de presentes
+  container.style.display = (container.style.display === 'none' || container.style.display === '') ? 'block' : 'none';
+}
+
+
 function mostrarMensagem() {
-    document.getElementById('mensagem-container').style.display = 'flex';
-  }
-  
-  function fecharMensagem() {
-    document.getElementById('mensagem-container').style.display = 'none';
-  }
+  const container = document.getElementById('mensagem-container');
+  container.style.display = 'flex';
+  document.body.classList.add("mensagem-aberta"); // Adiciona classe no <body>
+}
+
+function fecharMensagem() {
+  const container = document.getElementById('mensagem-container');
+  container.style.display = 'none';
+  document.body.classList.remove("mensagem-aberta"); // Remove classe do <body>
+}
   
   const flores = document.getElementById('flores');
   const emojis = ['🌸', '🌼', '🌷', '🌹', '🌻', '💐'];
@@ -26,3 +37,16 @@ function verificarSenha() {
     }
   };
 
+function abrirDisco(elemento) {
+    const audio = elemento.querySelector('audio');
+    const imagem = elemento.querySelector('.vinil');
+  
+    if (audio.paused) {
+      audio.play();
+      imagem.classList.add('girando');
+    } else {
+      audio.pause();
+      imagem.classList.remove('girando');
+    }
+}
+  

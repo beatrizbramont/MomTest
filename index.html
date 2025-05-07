@@ -1,46 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Para a Melhor de todas &hearts;</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='./css/style.css'>
-    <script src='./js/main.js'></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js" defer></script>
 </head>
 <body>
+
+    <div class="music-container">
+        <div class="music tooltip" onclick="abrirDisco(this)">
+            <img class="vinil" src="./css/img/long-play-music-svgrepo-com.svg" alt="Disco 1">
+            <span class="tooltiptext">Clique aqui<br> para ouvir</span>
+            <div class="conteudo">
+                <audio preload="auto">
+                    <source src="./css/img/John Travolta And Olivia Newton John - You're The One That I Want.mp3" type="audio/mp3">
+                </audio>
+            </div>
+        </div>
+    </div>
+
+    <div class="present-container-externo" onclick="mostrarPresentes()">
+        <img class="surprise" src="./css/img/gift-present-box-svgrepo-com.svg" alt="Presente">
+        <div class="present-texto">Clique aqui<br>para abrir/fechar</div>
+    </div>
+      
+    <div id="present-container" class="present-container">
+        <div class="surprise-box">
+        <h2>🎁 Vale-presentes 🎁</h2>
+        <div class="vales-container">
+            <div class="vale">💆 Vale massagem de 5 min.</div>
+            <div class="vale">☕ Vale capuccino na Cacau Show.</div>
+            <div class="vale">🍔 Vale combo no BurguerKing.</div>
+            <div class="vale">🛌 Vale um dia sem fazer nada.</div>
+            <div class="vale">🤝 Vale conversa de reconciliação.</div>
+            <div class="vale">🍣 Vale almoço no Japa.</div>
+            <div class="vale">🌳 Vale um dia no parque.</div>
+            <div class="vale">🥩 Vale almoço/janta no Outback.</div>
+            <div class="vale">🍸 Vale para vc escolher um licor de qualquer sabor.</div>
+            <div class="vale">🧼 Vale casa limpa rsrs.</div>
+        </div>
+        </div>
+    </div>
+  
     <h1>💖 Feliz dia das mães mami!!! 💖</h1>
     <p>
         Mami, você é minha inspiração, minha força e o meu coração, pode parecer clichê... Mas sem você não sei o que eu seria, muito obrigada por sempre me apoiar.
         <br />Te amo com todo o meu coração! 💕
     </p>
+
+    <!-- Polaroids -->
     <div class="polaroids">
-        <a href="#">
-            <img src="css/img/WhatsApp Image 2025-05-06 at 18.57.32.jpeg", class="responsive">
-        </a>
-        <a href="#">
-            <img src="css/img/WhatsApp Image 2025-05-06 at 18.50.03.jpeg", class="responsive">
-        </a>
-        <a href="#">
-            <img src="css/img/WhatsApp Image 2025-05-06 at 18.50.33.jpeg", class="responsive">
-        </a>
+        <a href="#"><img src="css/img/WhatsApp Image 2025-05-06 at 18.57.32.jpeg" class="responsive" alt="Foto 1"></a>
+        <a href="#"><img src="css/img/WhatsApp Image 2025-05-06 at 18.50.03.jpeg" class="responsive" alt="Foto 2"></a>
+        <a href="#"><img src="css/img/WhatsApp Image 2025-05-06 at 18.50.33.jpeg" class="responsive" alt="Foto 3"></a>
     </div>
 
+    <!-- Botão secreto -->
     <button onclick="verificarSenha()">Clique aqui</button>
 
+    <!-- Emojis de flores -->
     <div class="flowers" id="flores">🌸🌼🌷🌹🌻</div>
-    <div id="mensagem-container" class="mensagem-container">
+
+    <!-- Container da mensagem secreta -->
+    <div id="mensagem-container" class="mensagem-container" style="display: none;">
         <div class="mensagem-box">
-          <span class="fechar" onclick="fecharMensagem()">×</span>
-          <h2>💖 Te amo Infinitamente 💖</h2>
-          <p>Mãe, muito obrigada por todo apoio, toda assistência e pelo seu carinho.<br>
-            Sou muito sortuda por te ter presente em minha vida, vc é uma mulher que luta pelo que quer, que é extremamente engraçada, que faz de tudo pelos seus filhos, trabalhadora(até demais rs), que é linda e que é um exemplo de força e superação.<br>
-            Cada momento que passo ao seu lado são muito importantes e guardo cada lembrança com muito carinho, que nem no dia que você fechou o quintal da nossa casa na vó, encheu a piscina e fez mini<br> nuggets, 
-            até mesmo quando vamos na cacau show juntas só para tomar o capuccino kkkkkkk.<br>
-            Não existem palavras para descrever o tanto que eu te amo, e apesar de todo o trabalho que eu possa te dar, faço de tudo para ser uma filha boa para uma mãe excepcional.<br>
-            💕💕💕💕💕💕💕💕💕💕💕💕💕💕</p>
+            <span class="fechar" onclick="fecharMensagem()">X</span>
+            <h2>💖 Te amo Infinitamente 💖</h2>
+            <p>
+                Mãe, muito obrigada por todo apoio, toda assistência e pelo seu carinho.<br>
+                Sou muito sortuda por te ter presente em minha vida, vc é uma mulher que luta pelo que quer, que é extremamente engraçada, que faz de tudo pelos seus filhos, trabalhadora (até demais rs), que é linda e que é um exemplo de força e superação.<br>
+                Cada momento que passo ao seu lado são muito importantes e guardo cada lembrança com muito carinho, que nem no dia que você fechou o quintal da nossa casa na vó, encheu a piscina e fez mini nuggets, até mesmo quando vamos na cacau show juntas só para tomar o capuccino kkkkkkk.<br>
+                Não existem palavras para descrever o tanto que eu te amo, e apesar de todo o trabalho que eu possa te dar, faço de tudo para ser uma filha boa para uma mãe excepcional.<br>
+                💕💕💕💕💕💕💕💕💕💕💕💕💕💕
+            </p>
         </div>
-      </div>
-    <script src="main.js"></script>
+    </div>
+
 </body>
 </html>

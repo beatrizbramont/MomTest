@@ -25,6 +25,164 @@ body {
     border-radius: 12px;
   }
   
+  .present-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+    padding: 2rem 1rem;
+    z-index: 999;
+    box-sizing: border-box;
+  }
+  
+  .surprise-box {
+    background: linear-gradient(135deg, #e28487 0%, #ffb6a2 100%);
+    color: #333;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    animation: aparecer 0.5s ease;
+    box-sizing: border-box;
+  }
+  
+  .surprise-box .fechar {
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  
+  img.surprise {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1050;
+  transition: background-color 0.3s ease;
+}
+
+img.surprise:hover {
+  background-color: #fce4ec;
+}
+
+
+  
+  .tooltip {
+    position: relative;
+  }
+  
+  .tooltiptext {
+    position: absolute;
+    top: calc(100% + 6px); /* abaixo do disco */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .present-container-externo {
+    display: flex;
+    flex-direction: column; /* Isso garante que o conteúdo seja empilhado verticalmente */
+    align-items: center; /* Alinha o conteúdo horizontalmente */
+    text-align: center; /* Centraliza o texto dentro do contêiner */
+    padding: 10px;
+}
+  
+.present-texto {
+  margin-top: 10px; /* Dá um espaçamento entre o ícone e o texto */
+  display: block; /* Faz com que o texto ocupe toda a largura e fique abaixo do ícone */
+  background-color: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+  white-space: nowrap;
+  opacity: 1; /* Torna o texto sempre visível */
+  pointer-events: none; /* Isso impede que o texto interfira em outros elementos */
+}
+
+  
+  .present-container-externo:hover .present-texto {
+    opacity: 1; /* Torna o texto visível ao passar o mouse */
+  }
+  
+  .present.surprise {
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1050;
+    transition: background-color 0.3s ease;
+}
+  
+  .surprise:hover {
+    background-color: #fce4ec;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    opacity: 1;
+  }
+
+  
+  .vinil {
+    width: 80px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .girando {
+    animation: girar 3s linear infinite;
+  }
+
+  .music-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  body.mensagem-aberta .vinil {
+    display: none !important;
+  }  
+  
+  
+  .music .vinil {
+    width: 60px;
+    height: auto;
+  }
+  
+  @keyframes girar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  
   .heart {
     color: red;
     font-size: 3rem;
@@ -47,7 +205,7 @@ body {
   }
   
   .mensagem-box {
-    background: linear-gradient(135deg, #fd7175 0%, #faa68e 100%);
+    background: linear-gradient(135deg, #e28487 0%, #ffb6a2 100%);
     color: #333;
     margin: 0 auto;
     padding: 2rem;
@@ -92,10 +250,14 @@ body {
     }
     
     .polaroids img.responsive {
-        width: 280px;
-        height: auto;
-        display: block;
-    }
+      width: 280px;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  }
+
   @keyframes aparecer {
     from { transform: scale(0.8); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
@@ -127,7 +289,7 @@ body {
   }
   
   button {
-    margin-top: 2rem;
+    margin-top: -5px;
     padding: 1rem 2rem;
     font-size: 1.2rem;
     border: none;
@@ -141,3 +303,32 @@ body {
   button:hover {
     background-color: rgb(121, 28, 28);
   }
+
+  .vales-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin: 2rem auto;
+    max-width: 700px;
+  }
+  
+  .vale {
+    background-color: #fff5f7;
+    color: #b03e47;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    min-width: 200px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .vale:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  }
+  

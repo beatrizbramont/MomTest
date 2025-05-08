@@ -33,20 +33,60 @@
         <div class="surprise-box">
         <h2>🎁 Vale-presentes 🎁</h2>
         <div class="vales-container">
-            <div class="vale">💆 Vale massagem de 5 min.</div>
-            <div class="vale">☕ Vale capuccino na Cacau Show.</div>
-            <div class="vale">🍔 Vale combo no BurguerKing.</div>
-            <div class="vale">🛌 Vale um dia sem fazer nada.</div>
-            <div class="vale">🤝 Vale conversa de reconciliação.</div>
-            <div class="vale">🍣 Vale almoço no Japa.</div>
-            <div class="vale">🌳 Vale um dia no parque.</div>
-            <div class="vale">🥩 Vale almoço/janta no Outback.</div>
-            <div class="vale">🍸 Vale para vc escolher um licor de qualquer sabor.</div>
-            <div class="vale">🧼 Vale casa limpa rsrs.</div>
+            <div class="vale" onclick="usarVale(this)">
+                <span>💆 Vale massagem de 5 min.</span>
+                <span class="contador" id="contador-massagem">0</span>
+            </div>
+            <div class="vale" onclick="usarVale(this)">
+                ☕<span>Vale capuccino na Cacau Show.</span>
+                <span class="contador" id="contador-capuccino">0</span>
+            </div>
+            <div class="vale" onclick="usarVale(this)">
+                🍔<span>Vale combo no BurguerKing.</span>
+                <span class="contador" id="contador-burguerking">0</span>
+            </div>
+            <div class="vale" onclick="usarVale(this)">
+                🛌<span>Vale um dia sem fazer nada.</span>
+                <span class="contador" id="contador-dia-livre">0</span>
+            </div>
+            <div class="vale" onclick="usarVale(this)">
+                🤝<span>Vale conversa de reconciliação.</span>
+                <span class="contador" id="contador-reconciliacao">0</span>
+            </div>
+            <div class="vale" onclick="usarVale(this)">
+                🍣<span>Vale almoço no Japa.</span>
+                <span class="contador" id="contador-japa">0</span>
+            </div>
+            <div class="vale" onclick="usarVale(this)">
+                🌳<span>Vale um dia no parque.</span>
+                <span class="contador" id="contador-parque">0</span>
+            </div>
+            <div class="vale" onclick="usarVale(this)">
+                🥩<span>Vale almoço/janta no Outback.</span>
+                <span class="contador" id="contador-outback">0</span>
+            </div>
+            <div class="vale" onclick="usarVale(this)">
+                🍸<span>Vale para vc escolher um licor de qualquer sabor.</span>
+                <span class="contador" id="contador-licor">0</span>
+            </div>
+            <div class="vale" onclick="usarVale(this)">
+                🧼<span>Vale casa limpa rsrs.</span>
+                <span class="contador" id="contador-casa-limpa">0</span>
+            </div>
         </div>
         <button onclick="fecharPresentes()">Fechar</button>
         </div>
     </div>
+
+    <div id="overlay-notificacao" class="overlay-notificacao escondido">
+        <div id="notificacao-vale" class="notificacao-vale">
+          <div class="fogo1"></div>
+          <div class="fogo2"></div>
+          <div class="mensagem">🎉 Vale ilimitado! Aproveite sem moderação! 🥳</div>
+        </div>
+    </div>
+      
+      
   
     <h1>💖 Feliz dia das mães mami!!! 💖</h1>
     <p>

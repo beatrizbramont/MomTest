@@ -67,4 +67,88 @@ function abrirDisco(elemento) {
       imagem.classList.remove('girando');
     }
 }
-  
+
+function mostrarMensagemIlimitado() {
+  const overlay = document.getElementById('overlay-notificacao');
+  overlay.classList.remove('escondido');
+
+  setTimeout(() => {
+    overlay.classList.add('escondido');
+  }, 3000);
+}
+
+
+// Contadores de vales ilimitados
+let contadorValeCapuccino = 0;
+let contadorValeCombo = 0;
+let contadorValeDiaLivre = 0;
+let contadorValeConversa = 0;
+let contadorValeAlmocoJapa = 0;
+let contadorValeDiaParque = 0;
+let contadorValeAlmocoOutback = 0;
+let contadorValeLicor = 0;
+
+function usarVale(valeElemento) {
+  // Evita usar o vale mais de uma vez
+  if (valeElemento.classList.contains('usado')) return;
+
+  const textoVale = valeElemento.innerText.trim();
+
+  // Verificações para vales únicos (como a massagem)
+  if (textoVale.includes("massagem de 5 min") || textoVale.includes("casa limpa")) {
+    const confirmar = confirm("Esse vale só pode ser usado uma vez. Tem certeza que deseja usá-lo?");
+    if (confirmar) {
+      valeElemento.classList.add('usado');
+      
+      // Remove qualquer overlay existente antes de adicionar um novo
+      valeElemento.classList.add('usado');
+    return;
+  }}
+
+  // Atualiza os contadores para os vales ilimitados
+  if (textoVale.includes("capuccino na Cacau Show")) contadorValeCapuccino++;
+  if (textoVale.includes("combo no BurguerKing")) contadorValeCombo++;
+  if (textoVale.includes("um dia sem fazer nada")) contadorValeDiaLivre++;
+  if (textoVale.includes("conversa de reconciliação")) contadorValeConversa++;
+  if (textoVale.includes("almoço no Japa")) contadorValeAlmocoJapa++;
+  if (textoVale.includes("um dia no parque")) contadorValeDiaParque++;
+  if (textoVale.includes("almoço/janta no Outback")) contadorValeAlmocoOutback++;
+  if (textoVale.includes("licor de qualquer sabor")) contadorValeLicor++;
+
+  mostrarMensagemIlimitado();
+
+  atualizarQuadroUsos();
+}
+
+
+function atualizarQuadroUsos() {
+  const totalUsos = contadorValeCapuccino + contadorValeCombo + contadorValeDiaLivre +
+                    contadorValeConversa + contadorValeAlmocoJapa + contadorValeDiaParque +
+                    contadorValeAlmocoOutback + contadorValeLicor;
+
+  if (totalUsos === 0) return; // Não exibe o quadro se nenhum vale foi usado
+
+  let quadro = document.getElementById('quadro-usos');
+  if (!quadro) {
+    quadro = document.createElement('div');
+    quadro.id = 'quadro-usos';
+    quadro.className = 'quadro-usos';
+    const container = document.querySelector('.vales-container');
+    container.insertAdjacentElement('afterend', quadro);
+  }
+
+  quadro.innerHTML = `
+    <h3>📊 Uso dos Vales Ilimitados:</h3>
+    <ul>
+      <li>☕ Capuccino: ${contadorValeCapuccino} vez(es)</li>
+      <li>🍔 Combo no BK: ${contadorValeCombo} vez(es)</li>
+      <li>🛌 Dia sem fazer nada: ${contadorValeDiaLivre} vez(es)</li>
+      <li>🤝 Conversa de reconciliação: ${contadorValeConversa} vez(es)</li>
+      <li>🍣 Almoço no Japa: ${contadorValeAlmocoJapa} vez(es)</li>
+      <li>🌳 Dia no parque: ${contadorValeDiaParque} vez(es)</li>
+      <li>🥩 Outback: ${contadorValeAlmocoOutback} vez(es)</li>
+      <li>🍸 Licor: ${contadorValeLicor} vez(es)</li>
+    </ul>
+  `;
+}
+

@@ -333,7 +333,7 @@ img.surprise:hover {
     border-radius: 12px;
     font-size: 1.1rem;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;    
     cursor: pointer;
     min-width: 200px;
     text-align: center;
@@ -343,5 +343,160 @@ img.surprise:hover {
   .vale:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  }
+  
+  .vale.usado {
+    background-color: #e0e0e0; /* Cor cinza para indicar que foi usado */
+    color: #777; /* Cor do texto mais clara */
+    cursor: not-allowed; /* Desabilita o cursor para indicar que não pode ser clicado */
+    position: relative; /* Para que possamos posicionar a sobreposição */
+    overflow: hidden; /* Garante que a sobreposição não ultrapasse os limites do vale */
+  }
+  
+  .vale.usado:hover {
+    transform: none; /* Desabilita o efeito de hover quando já usado */
+    box-shadow: none; /* Retira o efeito de sombra quando já usado */
+  }
+  
+  .vale.usado::after {
+    content: "Vale já foi usado 😔";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem); /* responsivo */
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+    z-index: 1;
+    border-radius: 12px;
+    line-height: 1.4;
+  }
+  
+  #quadro-usos {
+    background-color: #fffde7;
+    border: 1px solid #fdd835;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #5d4037;
+  }
+  
+  #quadro-usos h3 {
+    margin-top: 0;
+    font-size: 16px;
+    color: #f57f17;
+  }
+  
+  #quadro-usos ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  #quadro-usos li {
+    margin: 5px 0;
+  }
+
+  @keyframes fadeInOverlay {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .notificacao-vale {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ff7ecb, #ffd86f);
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 1.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: aparecer 0.5s ease-out forwards;
+    position: fixed;
+    gap: 20px;
+  }
+  
+  .notificacao-vale .mensagem {
+    z-index: 2;
+    text-align: center;
+    text-shadow: 1px 1px 3px #000;
+  }
+  
+  .notificacao-vale.escondido {
+    display: none;
+  }
+  
+  /* Animação de entrada */
+  @keyframes aparecer {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  .overlay-notificacao {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* fundo escuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998; /* abaixo do .notificacao-vale */
+  }
+  
+  .overlay-notificacao.escondido {
+    display: none;
+  }
+  
+  
+  /* Fogos de artifício animados */
+  .fogo1, .fogo2 {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: gold;
+    animation: fogo 0.8s ease-out infinite;
+    z-index: 1;
+  }
+  
+  .fogo1 {
+    top: -10px;
+    left: 10px;
+  }
+  
+  .fogo2 {
+    top: -10px;
+    right: 10px;
+    background: cyan;
+  }
+  
+  @keyframes fogo {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(3); opacity: 0; }
   }
   

@@ -62,25 +62,20 @@ body {
 
   
   img.surprise {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  width: 60px;
-  height: 60px;
-  background-color: #fff;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  z-index: 1050;
-  transition: background-color 0.3s ease;
-}
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
 
 img.surprise:hover {
   background-color: #fce4ec;
 }
-
-
   
   .tooltip {
     position: relative;
@@ -103,31 +98,42 @@ img.surprise:hover {
     z-index: 10;
   }
 
+  .present-wrapper {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1050;
+  }  
+
   .present-container-externo {
+    position: relative;
     display: flex;
     flex-direction: column; /* Isso garante que o conteúdo seja empilhado verticalmente */
     align-items: center; /* Alinha o conteúdo horizontalmente */
     text-align: center; /* Centraliza o texto dentro do contêiner */
-    padding: 10px;
 }
   
 .present-texto {
-  margin-top: 10px; /* Dá um espaçamento entre o ícone e o texto */
-  display: block; /* Faz com que o texto ocupe toda a largura e fique abaixo do ícone */
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #333;
   color: #fff;
   padding: 6px 10px;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   white-space: nowrap;
-  opacity: 1; /* Torna o texto sempre visível */
-  pointer-events: none; /* Isso impede que o texto interfira em outros elementos */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
 }
 
-  
-  .present-container-externo:hover .present-texto {
-    opacity: 1; /* Torna o texto visível ao passar o mouse */
-  }
+.present-container-externo:hover .present-texto {
+  opacity: 1;
+}
+
   
   .present.surprise {
     width: 60px;
@@ -191,7 +197,10 @@ img.surprise:hover {
   
 .mensagem-container {
     
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* se quiser empilhar mais itens */
     position: fixed;
     top: 0;
     left: 0;
@@ -224,6 +233,10 @@ img.surprise:hover {
   
   .mensagem-box p {
     font-size: 1.2rem;
+  }
+
+  body.mensagem-aberta .present-container-externo {
+    display: none !important;
   }
   
   .fechar {

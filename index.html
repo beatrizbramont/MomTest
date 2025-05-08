@@ -22,12 +22,14 @@
         </div>
     </div>
 
-    <div class="present-container-externo" onclick="mostrarPresentes()">
-        <img class="surprise" src="./css/img/gift-present-box-svgrepo-com.svg" alt="Presente">
-        <div class="present-texto">Clique aqui<br>para abrir/fechar</div>
-    </div>
-      
-    <div id="present-container" class="present-container">
+    <div class="present-wrapper" >
+        <div class="present-container-externo" onclick="verificarVales(this)" onclick="mostrarPresentes(this)">
+            <img class="surprise" src="./css/img/gift-present-box-svgrepo-com.svg" alt="Presente" >
+            <span class="present-texto">Clique aqui<br>para <br>abrir/fechar</span>
+        </div>
+    </div>  
+    
+    <div id="present-container" class="present-container" >
         <div class="surprise-box">
         <h2>🎁 Vale-presentes 🎁</h2>
         <div class="vales-container">
@@ -42,6 +44,7 @@
             <div class="vale">🍸 Vale para vc escolher um licor de qualquer sabor.</div>
             <div class="vale">🧼 Vale casa limpa rsrs.</div>
         </div>
+        <button onclick="fecharPresentes()">Fechar</button>
         </div>
     </div>
   
@@ -67,7 +70,6 @@
     <!-- Container da mensagem secreta -->
     <div id="mensagem-container" class="mensagem-container" style="display: none;">
         <div class="mensagem-box">
-            <span class="fechar" onclick="fecharMensagem()">X</span>
             <h2>💖 Te amo Infinitamente 💖</h2>
             <p>
                 Mãe, muito obrigada por todo apoio, toda assistência e pelo seu carinho.<br>
@@ -76,6 +78,7 @@
                 Não existem palavras para descrever o tanto que eu te amo, e apesar de todo o trabalho que eu possa te dar, faço de tudo para ser uma filha boa para uma mãe excepcional.<br>
                 💕💕💕💕💕💕💕💕💕💕💕💕💕💕
             </p>
+            <button onclick="fecharMensagem()">Fechar</button>
         </div>
     </div>
 

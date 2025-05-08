@@ -4,6 +4,11 @@ function mostrarPresentes() {
   container.style.display = (container.style.display === 'none' || container.style.display === '') ? 'block' : 'none';
 }
 
+function fecharPresentes() {
+  const container = document.getElementById('present-container');
+  container.style.display = 'none';
+  document.body.classList.remove("present-aberta"); // Remove classe do <body>
+}
 
 function mostrarMensagem() {
   const container = document.getElementById('mensagem-container');
@@ -36,6 +41,19 @@ function verificarSenha() {
       alert("Senha incorreta. Acesso negado.");
     }
   };
+
+function verificarVales() {
+  const senha = prompt("(dica: Como que pede com educação? - Primeira letra é maiúscula.) Digite a senha para acessar: ");
+  const senhaCorreta = "Por favor";
+  const senhaCorreta02 = "Pfv";
+  
+ 
+  if (senha === senhaCorreta || senha === senhaCorreta02) {
+    mostrarPresentes();
+  } else {
+    alert("Senha incorreta. Acesso negado.");
+  }
+};
 
 function abrirDisco(elemento) {
     const audio = elemento.querySelector('audio');

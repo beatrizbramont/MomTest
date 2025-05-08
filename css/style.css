@@ -380,6 +380,7 @@ img.surprise:hover {
     line-height: 1.4;
   }
   
+
   #quadro-usos {
     background-color: #fffde7;
     border: 1px solid #fdd835;
@@ -498,5 +499,13 @@ img.surprise:hover {
   @keyframes fogo {
     0% { transform: scale(1); opacity: 1; }
     100% { transform: scale(3); opacity: 0; }
+  }
+  
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2rem; /* menor para caber na tela */
+      margin-top: 5rem; /* empurra para baixo */
+      padding: 0 1rem;  /* espaçamento lateral se precisar */
+    }
   }
   

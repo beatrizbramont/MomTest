@@ -89,23 +89,32 @@ let contadorValeAlmocoOutback = 0;
 let contadorValeLicor = 0;
 
 function usarVale(valeElemento) {
-  // Evita usar o vale mais de uma vez
-  if (valeElemento.classList.contains('usado')) return;
-
   const textoVale = valeElemento.innerText.trim();
 
-  // Verificações para vales únicos (como a massagem)
-  if (textoVale.includes("massagem de 5 min") || textoVale.includes("casa limpa")) {
-    const confirmar = confirm("Esse vale só pode ser usado uma vez. Tem certeza que deseja usá-lo?");
-    if (confirmar) {
-      valeElemento.classList.add('usado');
-      
-      // Remove qualquer overlay existente antes de adicionar um novo
-      valeElemento.classList.add('usado');
-    return;
-  }}
+  // Chaves únicas para os vales especiais
+  const chavesUnicas = {
+    "massagem de 5 min": "usado_massagem",
+    "casa limpa": "usado_casalimpa"
+  };
 
-  // Atualiza os contadores para os vales ilimitados
+  // Verifica se é um vale único
+  for (const chave in chavesUnicas) {
+    if (textoVale.includes(chave)) {
+      if (sessionStorage.getItem(chavesUnicas[chave]) === "true") {
+        alert("Este vale já foi usado nesta sessão.");
+        return;
+      }
+
+      const confirmar = confirm("Esse vale só pode ser usado uma vez por sessão. Deseja continuar?");
+      if (confirmar) {
+        valeElemento.classList.add('usado');
+        sessionStorage.setItem(chavesUnicas[chave], "true");
+      }
+      return;
+    }
+  }
+
+  // Vales ilimitados
   if (textoVale.includes("capuccino na Cacau Show")) contadorValeCapuccino++;
   if (textoVale.includes("combo no BurguerKing")) contadorValeCombo++;
   if (textoVale.includes("um dia sem fazer nada")) contadorValeDiaLivre++;
@@ -116,9 +125,9 @@ function usarVale(valeElemento) {
   if (textoVale.includes("licor de qualquer sabor")) contadorValeLicor++;
 
   mostrarMensagemIlimitado();
-
   atualizarQuadroUsos();
 }
+
 
 
 function atualizarQuadroUsos() {

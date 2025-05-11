@@ -21,33 +21,23 @@ function fecharMensagem() {
   container.style.display = 'none';
   document.body.classList.remove("mensagem-aberta"); // Remove classe do <body>
 }
-  
-  const flores = document.getElementById('flores');
-  const emojis = ['🌸', '🌼', '🌷', '🌹', '🌻', '💐'];
-  
-  setInterval(() => {
-    flores.textContent = emojis
-      .map(() => emojis[Math.floor(Math.random() * emojis.length)])
-      .join('');
-  }, 2000);
-  
+
 function verificarSenha() {
-    const senha = prompt("(dica: Como eu te chamo amorosamente - tem duas letrinhas no final e a primeira letra é maiúscula) Digite a senha para acessar: ");
-    const senhaCorreta = "Mozii";
- 
-    if (senha === senhaCorreta) {
-      mostrarMensagem();
-    } else {
-      alert("Senha incorreta. Acesso negado.");
-    }
-  };
+  const senha = prompt("(dica: Como eu te chamo amorosamente - tem duas letrinhas no final e a primeira letra é maiúscula) Digite a senha para acessar: ");
+  const senhaCorreta = "Mozii";
+
+  if (senha === senhaCorreta) {
+    mostrarMensagem();
+  } else {
+    alert("Senha incorreta. Acesso negado.");
+  }
+};
 
 function verificarVales() {
   const senha = prompt("(dica: Como que pede com educação? - Primeira letra é maiúscula.) Digite a senha para acessar: ");
   const senhaCorreta = "Por favor";
   const senhaCorreta02 = "Pfv";
-  
- 
+
   if (senha === senhaCorreta || senha === senhaCorreta02) {
     mostrarPresentes();
   } else {
@@ -56,16 +46,16 @@ function verificarVales() {
 };
 
 function abrirDisco(elemento) {
-    const audio = elemento.querySelector('audio');
-    const imagem = elemento.querySelector('.vinil');
-  
-    if (audio.paused) {
-      audio.play();
-      imagem.classList.add('girando');
-    } else {
-      audio.pause();
-      imagem.classList.remove('girando');
-    }
+  const audio = elemento.querySelector('audio');
+  const imagem = elemento.querySelector('.vinil');
+
+  if (audio.paused) {
+    audio.play();
+    imagem.classList.add('girando');
+  } else {
+    audio.pause();
+    imagem.classList.remove('girando');
+  }
 }
 
 function mostrarMensagemIlimitado() {
@@ -77,27 +67,15 @@ function mostrarMensagemIlimitado() {
   }, 3000);
 }
 
-
-// Contadores de vales ilimitados
-let contadorValeCapuccino = 0;
-let contadorValeCombo = 0;
-let contadorValeDiaLivre = 0;
-let contadorValeConversa = 0;
-let contadorValeAlmocoJapa = 0;
-let contadorValeDiaParque = 0;
-let contadorValeAlmocoOutback = 0;
-let contadorValeLicor = 0;
-
 function usarVale(valeElemento) {
   const textoVale = valeElemento.innerText.trim();
 
-  // Chaves únicas para os vales especiais
+  // Vales únicos (ainda com sessionStorage se quiser manter esse comportamento)
   const chavesUnicas = {
     "massagem de 5 min": "usado_massagem",
     "casa limpa": "usado_casalimpa"
   };
 
-  // Verifica se é um vale único
   for (const chave in chavesUnicas) {
     if (textoVale.includes(chave)) {
       if (sessionStorage.getItem(chavesUnicas[chave]) === "true") {
@@ -114,28 +92,53 @@ function usarVale(valeElemento) {
     }
   }
 
-  // Vales ilimitados
-  if (textoVale.includes("capuccino na Cacau Show")) contadorValeCapuccino++;
-  if (textoVale.includes("combo no BurguerKing")) contadorValeCombo++;
-  if (textoVale.includes("um dia sem fazer nada")) contadorValeDiaLivre++;
-  if (textoVale.includes("conversa de reconciliação")) contadorValeConversa++;
-  if (textoVale.includes("almoço no Japa")) contadorValeAlmocoJapa++;
-  if (textoVale.includes("um dia no parque")) contadorValeDiaParque++;
-  if (textoVale.includes("almoço/janta no Outback")) contadorValeAlmocoOutback++;
-  if (textoVale.includes("licor de qualquer sabor")) contadorValeLicor++;
+  // Mapeamento dos vales ilimitados para chaves do localStorage
+  const valesIlimitados = {
+    "capuccino na Cacau Show": "contadorValeCapuccino",
+    "combo no BurguerKing": "contadorValeCombo",
+    "um dia sem fazer nada": "contadorValeDiaLivre",
+    "conversa de reconciliação": "contadorValeConversa",
+    "almoço no Japa": "contadorValeAlmocoJapa",
+    "um dia no parque": "contadorValeDiaParque",
+    "almoço/janta no Outback": "contadorValeAlmocoOutback",
+    "licor de qualquer sabor": "contadorValeLicor"
+  };
+
+  for (const chave in valesIlimitados) {
+    if (textoVale.includes(chave)) {
+      const storageKey = valesIlimitados[chave];
+      let valorAtual = parseInt(localStorage.getItem(storageKey)) || 0;
+      localStorage.setItem(storageKey, valorAtual + 1);
+      break;
+    }
+  }
 
   mostrarMensagemIlimitado();
   atualizarQuadroUsos();
 }
 
-
-
 function atualizarQuadroUsos() {
-  const totalUsos = contadorValeCapuccino + contadorValeCombo + contadorValeDiaLivre +
-                    contadorValeConversa + contadorValeAlmocoJapa + contadorValeDiaParque +
-                    contadorValeAlmocoOutback + contadorValeLicor;
+  const vales = {
+    "☕ Capuccino": "contadorValeCapuccino",
+    "🍔 Combo no BK": "contadorValeCombo",
+    "🛌 Dia sem fazer nada": "contadorValeDiaLivre",
+    "🤝 Conversa de reconciliação": "contadorValeConversa",
+    "🍣 Almoço no Japa": "contadorValeAlmocoJapa",
+    "🌳 Dia no parque": "contadorValeDiaParque",
+    "🥩 Outback": "contadorValeAlmocoOutback",
+    "🍸 Licor": "contadorValeLicor"
+  };
 
-  if (totalUsos === 0) return; // Não exibe o quadro se nenhum vale foi usado
+  let totalUsos = 0;
+  let listaVales = "";
+
+  for (const [label, key] of Object.entries(vales)) {
+    const valor = parseInt(localStorage.getItem(key)) || 0;
+    totalUsos += valor;
+    listaVales += `<li>${label}: ${valor} vez(es)</li>`;
+  }
+
+  if (totalUsos === 0) return;
 
   let quadro = document.getElementById('quadro-usos');
   if (!quadro) {
@@ -148,16 +151,34 @@ function atualizarQuadroUsos() {
 
   quadro.innerHTML = `
     <h3>📊 Uso dos Vales Ilimitados:</h3>
-    <ul>
-      <li>☕ Capuccino: ${contadorValeCapuccino} vez(es)</li>
-      <li>🍔 Combo no BK: ${contadorValeCombo} vez(es)</li>
-      <li>🛌 Dia sem fazer nada: ${contadorValeDiaLivre} vez(es)</li>
-      <li>🤝 Conversa de reconciliação: ${contadorValeConversa} vez(es)</li>
-      <li>🍣 Almoço no Japa: ${contadorValeAlmocoJapa} vez(es)</li>
-      <li>🌳 Dia no parque: ${contadorValeDiaParque} vez(es)</li>
-      <li>🥩 Outback: ${contadorValeAlmocoOutback} vez(es)</li>
-      <li>🍸 Licor: ${contadorValeLicor} vez(es)</li>
-    </ul>
+    <ul>${listaVales}</ul>
   `;
 }
 
+// Função para criar corações subindo aleatoriamente
+function criarCoracao() {
+  const container = document.getElementById('container-coracoes');
+  const coracao = document.createElement('span');
+  const emojis = ['❤️', '💖', '💘', '💕', '💞', '💗'];
+  const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+
+  coracao.classList.add('coracao-animado');
+  coracao.textContent = emoji;
+
+  // Posição aleatória horizontal (entre 0% e 100% da largura da tela)
+  coracao.style.left = Math.random() * 100 + 'vw';
+
+  // Tamanho aleatório
+  const tamanho = Math.random() * 20 + 20; // entre 20px e 40px
+  coracao.style.fontSize = `${tamanho}px`;
+
+  container.appendChild(coracao);
+
+  // Remover após a animação
+  setTimeout(() => {
+    coracao.remove();
+  }, 4000); // duração da animação
+}
+
+// Criar corações continuamente
+setInterval(criarCoracao, 300);

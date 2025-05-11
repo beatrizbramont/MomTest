@@ -36,44 +36,35 @@
         <div class="vales-container">
             <div class="vale" onclick="usarVale(this)">
                 <span>💆 Vale massagem de 5 min.</span>
-                <span class="contador" id="contador-massagem">0</span>
             </div>
             <div class="vale" onclick="usarVale(this)">
                 ☕<span>Vale capuccino na Cacau Show.</span>
-                <span class="contador" id="contador-capuccino">0</span>
             </div>
             <div class="vale" onclick="usarVale(this)">
                 🍔<span>Vale combo no BurguerKing.</span>
-                <span class="contador" id="contador-burguerking">0</span>
             </div>
             <div class="vale" onclick="usarVale(this)">
                 🛌<span>Vale um dia sem fazer nada.</span>
-                <span class="contador" id="contador-dia-livre">0</span>
             </div>
             <div class="vale" onclick="usarVale(this)">
                 🤝<span>Vale conversa de reconciliação.</span>
-                <span class="contador" id="contador-reconciliacao">0</span>
             </div>
             <div class="vale" onclick="usarVale(this)">
                 🍣<span>Vale almoço no Japa.</span>
-                <span class="contador" id="contador-japa">0</span>
             </div>
             <div class="vale" onclick="usarVale(this)">
                 🌳<span>Vale um dia no parque.</span>
-                <span class="contador" id="contador-parque">0</span>
             </div>
             <div class="vale" onclick="usarVale(this)">
                 🥩<span>Vale almoço/janta no Outback.</span>
-                <span class="contador" id="contador-outback">0</span>
             </div>
             <div class="vale" onclick="usarVale(this)">
                 🍸<span>Vale para vc escolher um licor de qualquer sabor.</span>
-                <span class="contador" id="contador-licor">0</span>
             </div>
             <div class="vale" onclick="usarVale(this)">
                 🧼<span>Vale casa limpa rsrs.</span>
-                <span class="contador" id="contador-casa-limpa">0</span>
             </div>
+            <!-- <button onclick="resetarTudo()" style="margin-top: 20px;">🔄 Resetar Vales e Sessão</button> -->
         </div>
         <button onclick="fecharPresentes()">Fechar</button>
         </div>
@@ -114,10 +105,11 @@
 
     <!-- Botão secreto -->
     <button onclick="verificarSenha()">Clique aqui</button>
+    <div id="container-coracoes">
 
     <!-- Emojis de flores -->
-    <div class="flowers" id="flores">🌸🌼🌷🌹🌻</div>
-
+        <div class="hearts">❤️</div>
+    </div>
     <!-- Container da mensagem secreta -->
     <div id="mensagem-container" class="mensagem-container" style="display: none;">
         <div class="mensagem-box">
